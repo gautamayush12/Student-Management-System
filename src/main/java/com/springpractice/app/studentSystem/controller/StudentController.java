@@ -5,6 +5,7 @@ import com.springpractice.app.studentSystem.dto.StudentDto;
 import com.springpractice.app.studentSystem.entity.Student;
 import com.springpractice.app.studentSystem.repository.StudentRepository;
 import com.springpractice.app.studentSystem.service.StudentService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +34,7 @@ public class StudentController {
     }
 
     @PostMapping
-    public ResponseEntity<StudentDto> createNewStudent(@RequestBody AddStudentRequestDto addStudentRequestDto){
+    public ResponseEntity<StudentDto> createNewStudent(@RequestBody @Valid AddStudentRequestDto addStudentRequestDto){
         return ResponseEntity.status(HttpStatus.CREATED).body(studentService.createNewStudent(addStudentRequestDto));
     }
 
